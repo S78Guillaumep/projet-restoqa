@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\DateRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DateRepository::class)]
-class Date
+#[ORM\Entity(repositoryClass: ReservationRepository::class)]
+class Reservation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,33 +15,34 @@ class Date
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $datetime = null;
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $heure = null;
 
     #[ORM\Column]
-    private ?float $nbcouvert = null;
+    private ?float $nbconvive = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $allergie = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservation')]
-    private ?Client $idclient = null;
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?Utilisateur $utilisateur = null;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDatetime(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->datetime;
+        return $this->date;
     }
 
-    public function setDatetime(\DateTimeInterface $datetime): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->datetime = $datetime;
+        $this->date = $date;
 
         return $this;
     }
@@ -58,14 +59,14 @@ class Date
         return $this;
     }
 
-    public function getNbcouvert(): ?float
+    public function getNbconvive(): ?float
     {
-        return $this->nbcouvert;
+        return $this->nbconvive;
     }
 
-    public function setNbcouvert(float $nbcouvert): self
+    public function setNbconvive(float $nbconvive): self
     {
-        $this->nbcouvert = $nbcouvert;
+        $this->nbconvive = $nbconvive;
 
         return $this;
     }
@@ -75,21 +76,21 @@ class Date
         return $this->allergie;
     }
 
-    public function setAllergie(string $allergie): self
+    public function setAllergie(?string $allergie): self
     {
         $this->allergie = $allergie;
 
         return $this;
     }
 
-    public function getIdclient(): ?Client
+    public function getUtilisateur(): ?Utilisateur
     {
-        return $this->idclient;
+        return $this->utilisateur;
     }
 
-    public function setIdclient(?Client $idclient): self
+    public function setUtilisateur(?Utilisateur $utilisateur): self
     {
-        $this->idclient = $idclient;
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

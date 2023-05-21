@@ -23,7 +23,7 @@ class Formule
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?float $prix = null;
+    private ?string $prix = null;
 
     #[ORM\OneToMany(mappedBy: 'idformule', targetEntity: Menu::class)]
     private Collection $menu;
@@ -62,12 +62,12 @@ class Formule
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(string $prix): self
     {
         $this->prix = $prix;
 

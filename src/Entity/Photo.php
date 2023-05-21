@@ -19,14 +19,17 @@ class Photo
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private $image = null;
+    #[ORM\Column(type: Types::BLOB, nullable:true)]
+    private $image;
 
-    #[ORM\ManyToOne(inversedBy: 'photos')]
-    private ?Administrateur $idadministrateur = null;
+    #[ORM\ManyToOne(inversedBy: 'photo')]
+    private ?Utilisateur $idutilisateur = null;
 
     #[ORM\OneToMany(mappedBy: 'idphoto', targetEntity: Galerie::class)]
     private Collection $galerie;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
 
     public function __construct()
     {
@@ -62,14 +65,14 @@ class Photo
         return $this;
     }
 
-    public function getIdadministrateur(): ?Administrateur
+    public function getidutilisateur(): ?Utilisateur
     {
-        return $this->idadministrateur;
+        return $this->idutilisateur;
     }
 
-    public function setIdadministrateur(?Administrateur $idadministrateur): self
+    public function setIdutilisateur(?Utilisateur $idutilisateur): self
     {
-        $this->idadministrateur = $idadministrateur;
+        $this->idutilisateur = $idutilisateur;
 
         return $this;
     }
@@ -100,6 +103,18 @@ class Photo
                 $galerie->setIdphoto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

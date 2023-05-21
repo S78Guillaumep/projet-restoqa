@@ -20,7 +20,7 @@ class Menu
     private ?Formule $idformule = null;
 
     #[ORM\ManyToOne(inversedBy: 'menu')]
-    private ?Administrateur $idaministrateur = null;
+    private ?Utilisateur $idutilisateur = null;
 
     public function getId(): ?int
     {
@@ -51,14 +51,14 @@ class Menu
         return $this;
     }
 
-    public function getIdaministrateur(): ?Administrateur
+    public function getIdutilisateur(): ?Utilisateur
     {
-        return $this->idaministrateur;
+        return $this->idutilisateur;
     }
 
-    public function setIdaministrateur(?Administrateur $idaministrateur): self
+    public function setIdutilisateur(?Utilisateur $idutilisateur): self
     {
-        $this->idaministrateur = $idaministrateur;
+        $this->idutilisateur = $idutilisateur;
 
         return $this;
     }

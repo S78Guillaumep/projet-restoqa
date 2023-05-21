@@ -16,11 +16,13 @@ class Carte
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+
     #[ORM\ManyToOne(inversedBy: 'carte')]
     private ?Plat $idplat = null;
 
+
     #[ORM\ManyToOne(inversedBy: 'carte')]
-    private ?Administrateur $idadminstrateur = null;
+    private ?Utilisateur $idutilisateur = null;
 
     public function getId(): ?int
     {
@@ -51,14 +53,16 @@ class Carte
         return $this;
     }
 
-    public function getIdadminstrateur(): ?Administrateur
+
+
+    public function getIdutilisateur(): ?Utilisateur
     {
-        return $this->idadminstrateur;
+        return $this->idutilisateur;
     }
 
-    public function setIdadminstrateur(?Administrateur $idadminstrateur): self
+    public function setIdutilisateur(?Utilisateur $idutilisateur): self
     {
-        $this->idadminstrateur = $idadminstrateur;
+        $this->idutilisateur = $idutilisateur;
 
         return $this;
     }

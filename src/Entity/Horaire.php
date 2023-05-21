@@ -23,6 +23,9 @@ class Horaire
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $fermeture = null;
 
+    #[ORM\ManyToOne]
+    private ?Utilisateur $idutilisateur = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Horaire
     public function setFermeture(\DateTimeInterface $fermeture): self
     {
         $this->fermeture = $fermeture;
+
+        return $this;
+    }
+
+    public function getIdutilisateur(): ?Utilisateur
+    {
+        return $this->idutilisateur;
+    }
+
+    public function setIdutilisateur(?Utilisateur $idutilisateur): self
+    {
+        $this->idutilisateur = $idutilisateur;
 
         return $this;
     }
