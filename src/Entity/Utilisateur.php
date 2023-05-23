@@ -22,7 +22,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(type:"json")]
+    #[ORM\Column(type:"text")]
     private  $roles = [];
 
     #[ORM\OneToMany(mappedBy: 'idutilisateur', targetEntity: Photo::class)]
