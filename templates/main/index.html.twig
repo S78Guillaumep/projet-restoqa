@@ -1,6 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<h1>Quai Atlantique</h1>
-<p>Bienvenue</p>
+{% block title %}Accueil Quai Atlantique
 {% endblock %}
+
+{% block body %}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>Quai Atlantique</h1>
+				<p>Bienvenue dans notre univers</p>
+			</div>
+			<h1>Nos Formules du moment</h1>
+			{% for menu in menu %}
+				<div class="col-4">
+					<div class="card; h-100">
+						<div class="card-body">
+							<h2 class="card-title">{{ menu.titre }}</h2>
+							<a href="{{ path( 'formule' )}}" class="btn btn-secondary btn">
+								En voir Plus..</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+			
+				<h1>Nos Plats de saison</h1>
+				{% for carte in carte %}
+					<div class="col-4">
+						<div class="card; h-100">
+							<div class="card-body">
+								<h2 class="card-title">{{ carte.titre }}</h2>
+								<a href="{{ path( 'plat' )}}" class="btn btn-secondary btn">En voir Plus..</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</section>
+		</main>
+	{% endblock %}

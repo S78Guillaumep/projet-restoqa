@@ -1,8 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Liste des plats
+	les Plats de la Carte
 {% endblock %}
+
 {% block body %}
-<h1>Liste des plats</h1>
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>
+					Plats phares de la Carte</h1>
+				<h3>
+					(par catégorie)
+				</h3>
+			</div>
+			{% for plat in plat%}
+				<div class="col-12 mb-4">
+					<div class="card; h-100">
+						<div class="card-body">
+							<h2 class="card-title">{{ plat.titreplat }}</h2>
+							<p class="card-text">{{ plat.description }}
+								<br>
+								{{ plat.type }}
+								<br>
+								{{ plat.prix }}
+							</p>
+						</div>
+					</div>
+					<a href="{{ path('main_carte')}}"></a>
+				</div>
+			{% endfor %}
+
+		</section>
+	</main>
 {% endblock %}

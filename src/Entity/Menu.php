@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use \App\Entity\Formule;
+use \App\Entity\Utilisateur;
 use App\Repository\MenuRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,8 +18,11 @@ class Menu
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[ORM\Column(length: 255)]
+    private ?int $menuordre;
+
     #[ORM\ManyToOne(inversedBy: 'menu')]
-    private ?Formule $idformule = null;
+    private ?Formule $formule = null;
 
     #[ORM\ManyToOne(inversedBy: 'menu')]
     private ?Utilisateur $idutilisateur = null;
@@ -39,14 +44,26 @@ class Menu
         return $this;
     }
 
-    public function getIdformule(): ?Formule
+    public function getMenuordre(): ?int
     {
-        return $this->idformule;
+        return $this->menuordre;
     }
 
-    public function setIdformule(?Formule $idformule): self
+    public function setmenuordre(int $menuordre): self
     {
-        $this->idformule = $idformule;
+        $this->menuordre = $menuordre;
+    
+        return $this;
+    }
+
+    public function getformule(): ?Formule
+    {
+        return $this->formule;
+    }
+
+    public function setformule(?Formule $formule): self
+    {
+        $this->formule = $formule;
 
         return $this;
     }

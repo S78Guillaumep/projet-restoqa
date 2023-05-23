@@ -19,14 +19,14 @@ class Formule
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[ORM\OneToMany(mappedBy: 'formule', targetEntity: Menu::class)]
+    private Collection $menu;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column]
     private ?string $prix = null;
-
-    #[ORM\OneToMany(mappedBy: 'idformule', targetEntity: Menu::class)]
-    private Collection $menu;
 
     public function __construct()
     {
@@ -86,7 +86,7 @@ class Formule
     {
         if (!$this->menu->contains($menu)) {
             $this->menu->add($menu);
-            $menu->setIdformule($this);
+            $menu->setformule($this);
         }
 
         return $this;
@@ -96,8 +96,8 @@ class Formule
     {
         if ($this->menu->removeElement($menu)) {
             // set the owning side to null (unless already changed)
-            if ($menu->getIdformule() === $this) {
-                $menu->setIdformule(null);
+            if ($menu->getformule() === $this) {
+                $menu->setformule(null);
             }
         }
 

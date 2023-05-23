@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Plat;
+use App\Entity\Utilisateur;
 use App\Repository\CarteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,10 +18,11 @@ class Carte
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?int $carteordre = null;
 
     #[ORM\ManyToOne(inversedBy: 'carte')]
     private ?Plat $idplat = null;
-
 
     #[ORM\ManyToOne(inversedBy: 'carte')]
     private ?Utilisateur $idutilisateur = null;
@@ -41,6 +44,19 @@ class Carte
         return $this;
     }
 
+    public function getCarteordre(): ?int
+    {
+        return $this->carteordre;
+    }
+
+    public function setcarteordre(int $carteordre): self
+    {
+        $this->carteordre = $carteordre;
+    
+
+        return $this;
+    }
+
     public function getIdplat(): ?Plat
     {
         return $this->idplat;
@@ -52,8 +68,6 @@ class Carte
 
         return $this;
     }
-
-
 
     public function getIdutilisateur(): ?Utilisateur
     {
