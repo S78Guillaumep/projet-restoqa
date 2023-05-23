@@ -27,5 +27,6 @@ final class Version20230523110840 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE utilisateur CHANGE roles roles JSON NOT NULL');
+        $this->addSql('DROP TABLE administrateur');
     }
 }

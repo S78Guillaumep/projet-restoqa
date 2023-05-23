@@ -20,9 +20,9 @@ final class Version20230519084941 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE horaire ADD administrateur_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE horaire ADD CONSTRAINT FK_BBC83DB67EE5403C FOREIGN KEY (administrateur_id) REFERENCES administrateur (id)');
-        $this->addSql('CREATE INDEX IDX_BBC83DB67EE5403C ON horaire (administrateur_id)');
+        //$this->addSql('ALTER TABLE horaire ADD administrateur_id INT DEFAULT NULL');
+        //$this->addSql('ALTER TABLE horaire ADD CONSTRAINT FK_BBC83DB67EE5403C FOREIGN KEY (administrateur_id) REFERENCES administrateur (id)');
+        //$this->addSql('CREATE INDEX IDX_BBC83DB67EE5403C ON horaire (administrateur_id)');
     }
 
     public function down(Schema $schema): void

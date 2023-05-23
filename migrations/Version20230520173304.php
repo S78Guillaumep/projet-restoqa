@@ -23,7 +23,7 @@ final class Version20230520173304 extends AbstractMigration
         $this->addSql('ALTER TABLE formule CHANGE prix prix VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE plat CHANGE prix prix VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE utilisateur CHANGE roles roles JSON NOT NULL');
-        $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B37EE5403C FOREIGN KEY (administrateur_id) REFERENCES administrateur (id)');
+        //$this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B37EE5403C FOREIGN KEY (administrateur_id) REFERENCES administrateur (id)');
         $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B319EB6921 FOREIGN KEY (client_id) REFERENCES client (id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1D1C63B37EE5403C ON utilisateur (administrateur_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1D1C63B319EB6921 ON utilisateur (client_id)');
